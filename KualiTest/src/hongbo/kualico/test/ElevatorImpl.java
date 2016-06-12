@@ -20,7 +20,7 @@ public class ElevatorImpl implements Elevator {
 	@Override
 	public int getFloorOn() {
 		if(!this.inMoving){
-			return this.getLastStoppedFloorNumber();
+			return this.getToFloorNumber();
 		}else{
 			return 0;
 		}
@@ -30,7 +30,7 @@ public class ElevatorImpl implements Elevator {
 	public void reportFloorNumber() {
 		if(getFloorOn() != 0){ //otherwise the elevator is in motion
 			inMoving =false;
-			System.out.println("Reached Floor: " + this.calledByFloorNumber());
+			System.out.println("Reached Floor: " + this.getToFloorNumber());
 		}
 		
 	}
