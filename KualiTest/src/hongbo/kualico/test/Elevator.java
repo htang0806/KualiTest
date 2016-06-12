@@ -26,5 +26,7 @@ public interface Elevator {
 	public void setMovingDirection(int dir);
 	
 	public void setInMoving(boolean mv);
+	
+	public void setCalledByFloorNum(int flrNum);
 
 }

@@ -32,11 +32,7 @@ public class ElevatorImpl implements Elevator {
 
 	@Override
 	public int getStoppedFloorNumber() {
-		if(this.inMoving){
-			return 0;
-		}else{
-			return this.calledByFloorNumber();
-		}
+		return this.calledByFloorNumber();
 	}
 
 	@Override
@@ -55,7 +51,7 @@ public class ElevatorImpl implements Elevator {
 		return this.lastStoppedNumber;
 	}
 
-	public void setCalledByFloorNumber(int callingFloor){
+	public void setCalledByFloorNum(int callingFloor){
 		this.lastStoppedNumber = callingFloor;
 	}
 

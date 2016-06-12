@@ -16,6 +16,7 @@ public class ElevatorController {
 		
 		calledElevator.setMovingDirection(direction);
 		calledElevator.setInMoving(true);
+		calledElevator.setCalledByFloorNum(floorNum);
 	}
 
 }
