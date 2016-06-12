@@ -13,7 +13,7 @@ public interface Elevator {
 	
 	public int getFloorOn();
 	
-	public void reportFloorNumber();
+	public void report();
 	
 	public int getLastStoppedFloorNumber();
 	

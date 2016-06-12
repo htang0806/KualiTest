@@ -27,11 +27,14 @@ public class ElevatorImpl implements Elevator {
 	}
 
 	@Override
-	public void reportFloorNumber() {
+	public void report() {
 		if(getFloorOn() != 0){ //otherwise the elevator is in motion
 			inMoving =false;
 			System.out.println("Reached Floor: " + this.getToFloorNumber());
+		}else{
+			System.out.println("Moving To Floor: " + this.getToFloorNumber());
 		}
+		
 		
 	}
 

@@ -24,6 +24,7 @@ public class ElevatorController {
 			calledElevator.setCalledByFloorNum(fromFloor);
 			calledElevator.setLastStoppedFloorNumber(fromFloor);
 			calledElevator.setToFloorNumber(toFloor);
+			calledElevator.report();
 		}
 	}
 	
