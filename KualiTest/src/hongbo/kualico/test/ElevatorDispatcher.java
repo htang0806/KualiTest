@@ -8,7 +8,7 @@ public class ElevatorDispatcher {
 	List<Elevator> elevatorList = new ArrayList<Elevator>();
 	
 	public void initialize(){
-		for(int i=0; i<4; i++){
+		for(int i=0; i<10; i++){
 			elevatorList.add(new ElevatorImpl());
 		}
 	}
@@ -17,14 +17,14 @@ public class ElevatorDispatcher {
 		Elevator elevatorCalled = null;
 		List<Elevator> callables = new ArrayList<Elevator>();
 		for(Elevator el : elevatorList){
-			if(el.isCallable() && el.getMovingDirection()==direction){
+			if(el.isCallable() && (el.getMovingDirection()==direction || !el.isMoving())){
 				callables.add(el);
 			}
 		}
 		if(callables.size() > 0){
 			int nearestElevator = Elevator.MAX_FLOOR_NUMBER;
 			for(Elevator elev : callables){
-				int dif = Math.abs(callingFloor -elev.getStoppedFloorNumber());
+				int dif = Math.abs(callingFloor -elev.getLastStoppedFloorNumber());
 				if(dif < nearestElevator){
 					elevatorCalled = elev;
 					nearestElevator = dif;

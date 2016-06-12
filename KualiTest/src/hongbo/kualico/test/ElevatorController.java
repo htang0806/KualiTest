@@ -9,14 +9,30 @@ public class ElevatorController {
 	
 	ElevatorDispatcher dispatcher = null;
 	
-	public void callElevator(int direction, int floorNum){
+	public void callElevator(int direction, int fromFloor, int toFloor){
 		dispatcher = new ElevatorDispatcher();
-		
-		Elevator calledElevator = dispatcher.getNearestCallableElevator(direction, floorNum);
-		
-		calledElevator.setMovingDirection(direction);
-		calledElevator.setInMoving(true);
-		calledElevator.setCalledByFloorNum(floorNum);
+		dispatcher.initialize(); //initialize elevators
+		Elevator calledElevator = dispatcher.getNearestCallableElevator(direction, fromFloor);
+		if(calledElevator != null){
+			if(toFloor < calledElevator.getLastStoppedFloorNumber()){
+				calledElevator.setMovingDirection(Elevator.MOVING_DOWN);
+			}else{
+				calledElevator.setMovingDirection(Elevator.MOVING_UP);
+			}
+			calledElevator.setMovingDirection(direction);
+			calledElevator.setInMoving(true);
+			calledElevator.setCalledByFloorNum(fromFloor);
+			calledElevator.setLastStoppedFloorNumber(fromFloor);
+			calledElevator.setToFloorNumber(toFloor);
+		}
+	}
+	
+	public static void main(String[] args){
+		ElevatorController elevatorControl = new ElevatorController();
+		int direction = Integer.parseInt(args[0]);
+		int fromfloor = Integer.parseInt(args[1]);
+		int tofloor = Integer.parseInt(args[2]);
+		elevatorControl.callElevator(direction, fromfloor, tofloor);
 	}
 
 }

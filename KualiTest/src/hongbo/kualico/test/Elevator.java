@@ -15,7 +15,9 @@ public interface Elevator {
 	
 	public void reportFloorNumber();
 	
-	public int getStoppedFloorNumber();
+	public int getLastStoppedFloorNumber();
+	
+	public void setLastStoppedFloorNumber(int flr);
 	
 	public boolean isCallable();
 	
@@ -28,5 +30,9 @@ public interface Elevator {
 	public void setInMoving(boolean mv);
 	
 	public void setCalledByFloorNum(int flrNum);
+	
+	public int getToFloorNumber();
+	
+	public void setToFloorNumber(int toflr);
 
 }
